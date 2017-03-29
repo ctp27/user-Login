@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	
+	
+	
+	<h:head>
+		<title>CTP | Login</title>
+		<h:outputStylesheet name="css/styles.css"  />
+	</h:head>
+	
+	<h:body>
+		<header>
+			<h1 class="logo">CTP Inc.</h1>
+			<h class="subTitle">Powered by JavaServer Faces</h>
+			<h:form>
+			<h:commandLink  value="Logout" rendered="#{questionBean.lock}" action="#{logout.invalidate()}" style="margin:0 0 0 800px;text-decoration:none;color:white;font-size:20px;"/>
+			</h:form>
+			<div id="line"></div>
+		</header>
+		
+		<div id="QuestionBox">	
+		<h:outputText style="color:red;font-size:20px; font-weight:20%" rendered="#{questionBean.lock}" value="Your account is locked due to three invalid attemps to login. Kindly enter the security questions to unlock."></h:outputText>
+		<h:outputText style="color:red;font-size:20px; font-weight:20%" rendered="#{!questionBean.lock}" value="Kindly answer your security questions to reset the password. "></h:outputText>
+		<br/><h id="forgotHead">Security Questions</h>
+		<h:form>
+			<h:messages globalOnly="true" styleClass="error"/>
+			<p class="Question">Q1. #{questionBean.q1}</p>
+			<h:inputText class="TextArea" a:placeholder="Answer" value="#{questionBean.a1}" 
+								required="true"
+								id="answer1"
+								requiredMessage="Enter Answer"/><br/>
+			<h:message for="answer1" styleClass="error" /><br/><br/>	
+			<p class="Question">Q2. #{questionBean.q2}</p>
+			<h:inputText class="TextArea" a:placeholder="Answer" value="#{questionBean.a2}" 
+								required="true"
+								id="answer2"
+								requiredMessage="Enter Answer"/><br/>
+			<h:message for="answer2" styleClass="error" /><br/><br/>
+			<h:commandButton class="Button" value="Submit" action="#{questionBean.control()}"/><br/>
+		</h:form>
+		</div>	
+	
+	</h:body>
+	
+	
+	
+	
+	</html>

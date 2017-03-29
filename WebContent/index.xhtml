@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	
+	<h:head>
+		<title>CTP | Login</title>
+		<h:outputStylesheet name="css/styles.css"  />
+	</h:head>
+	
+	<h:body>
+		<header>
+			<h1 class="logo">CTP Inc.</h1>
+			<h class="subTitle">Powered by JavaServer Faces</h>
+			<div id="line"></div>
+		</header>
+		<div id="LoginBox">	
+		<h:form>
+			<h:messages globalOnly="true" styleClass="error"/>	
+			<h:message for="email" styleClass="error" /><br/>
+			<h:message for="pass" styleClass="error" />
+			<h:inputText class="TextArea" a:placeholder="Email" value="#{login.email}" 
+								required="true"
+								id="email"
+								requiredMessage="Enter Email ID"
+								validatorMessage="Invalid Email ID">
+			<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+			</h:inputText>
+			<br/>
+			<br/><br/>
+			<h:inputSecret class="TextArea" a:placeholder="Password" value="#{login.password}"
+								required="true"
+								id="pass"
+								requiredMessage="Enter Password"></h:inputSecret>
+			<br/><br/>
+			<h:selectOneMenu class="prefix" value="#{login.type}">
+					<f:selectItem itemValue="User" itemLabel="User"/>
+					<f:selectItem itemValue="Admin" itemLabel="Admin"/>
+			</h:selectOneMenu>
+		
+		<br/><br/>
+			<h:commandButton class="Button" value="Login" action="#{login.exec()}"/><br/>
+			<p class="subText">New user? Sign up <h:link value="here" outcome="Creation"></h:link></p>
+			
+		</h:form>
+		<h:form>
+		<h:commandLink value="Forgot Password?" action="fpassword"/></h:form>
+		</div>	
+	
+	</h:body>
+	
+	
+	
+	
+	</html>

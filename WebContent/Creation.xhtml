@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	
+	
+	
+	<h:head>
+		<title>CTP | Login</title>
+		<h:outputStylesheet name="css/styles.css"  />
+	</h:head>
+	
+	<h:body>
+		<header>
+			<h1 class="logo">CTP Inc.</h1>
+			<h class="subTitle">Powered by JavaServer Faces</h>
+			<div id="line"></div>
+		</header>
+		<div id="createBox">	
+		<h:form name="create">
+			
+			<div class="centerAlign">
+			<h:messages globalOnly="true" styleClass="error"/>
+			<h id="formHead">Sign Up Form</h>
+			<p>Please fill in the following details.Fields with "*" are mandatory</p>
+			</div>
+			
+			<br/>
+			<h:inputText class="TextArea" a:placeholder="First Name *" value="#{create.firstName}" 
+								required="true"
+								id="firstName"
+								requiredMessage="Enter First Name"/><br/>
+			<h:message for="firstName" styleClass="error" /><br/><br/>
+			<h:inputText class="TextArea" a:placeholder="Last Name *" value="#{create.lastName}" 
+								required="true"
+								id="lastName"
+								requiredMessage="Enter Last Name"/><br/>
+			<h:message for="lastName" styleClass="error" /><br/><br/>
+			<h:inputText class="TextArea" a:placeholder="Email *" value="#{create.email}" 
+								required="true"
+								id="email"
+								requiredMessage="Please enter Email ID"
+								validatorMessage="Invalid Email ID"><br/>
+				<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+			</h:inputText><br/>
+			<h:message for="email" styleClass="error" /><br/><br/>
+			
+			<h:inputSecret class="TextArea" a:placeholder="Set Password *" value="#{create.password}"
+								required="true"
+								id="pass"
+								requiredMessage="Please enter Password"></h:inputSecret>
+			<br/><h:message for="pass" styleClass="error" /><br/><br/>
+			<h:inputSecret class="TextArea" a:placeholder="Confirm Password *" value="#{create.password2}"
+								required="true"
+								id="cpass"
+								requiredMessage="Please enter Password"></h:inputSecret>
+			<br/><h:message for="cpass" styleClass="error" /><br/><br/>
+			<p>Please select your security questions and answers. Note them down as they will be asked in the case of forgotten passwords</p>
+			
+			<h:selectOneMenu class="sqf" id="sq1" value="#{create.sq1}" required="true" requiredMessage="Please select a security question">
+				 <f:selectItem itemValue="" itemLabel="Select Security Question 1 *"  p:disabled="true" p:selected="true"/>
+  				 <f:selectItem itemValue="What is your mothers maiden name?" itemLabel="What is your mothers maiden name?" />
+  				 <f:selectItem itemValue="What is your Grandfather's birth city?" itemLabel="What is your Grandfather's birth city?" />
+  				 <f:selectItem itemValue="Your favourite childhood toy?" itemLabel="Your favourite childhood toy?" />
+				 <f:selectItem itemValue="In what city or town does your nearest sibling live?" itemLabel="In what city or town does your nearest sibling live?" />
+				 <f:selectItem itemValue="custom" itemLabel="Custom"/>
+				 <f:ajax render="hiddenField"/>
+			</h:selectOneMenu>
+			<h:message for="sq1" styleClass="error"/>
+			<h:panelGroup id="hiddenField">
+				<p><h:inputText class="saf" a:placeholder="Your Question*" 
+									value="#{create.customq}" 
+									rendered="#{create.sq1=='custom'}"
+									required="true"
+									id="csq1"
+									requiredMessage="Enter security question"/></p>
+				<p><h:message for="csq1" styleClass="error"/></p>
+			</h:panelGroup>
+			<h:inputText class="saf" a:placeholder="Answer 1 *" value="#{create.sqa1}" 
+								required="true"
+								id="sqa1"
+								requiredMessage="Enter Security Answer"/><br/>
+								<h:message for="sqa1" styleClass="error"></h:message>
+								<br/><br/>
+			<h:selectOneMenu class="sqf" id="sq2" value="#{create.sq2}" name="sq2" required="true" requiredMessage="Please select a security question">
+				 <f:selectItem itemValue="" itemLabel="Select Security Question 2 *"  p:disabled="true" p:selected="true"/>
+  				 <f:selectItem itemValue="What is the last name of the teacher who gave you your first failing grade?" itemLabel="What is the last name of the teacher who gave you your first failing grade?" />
+  				 <f:selectItem itemValue="What is the first name of the person you first kissed?" itemLabel="What is the first name of the person you first kissed?" />
+  				 <f:selectItem itemValue="What time of the day were you born?" itemLabel="What time of the day were you born?" />
+				 <f:selectItem itemValue="What is your passport number?" itemLabel="What is your passport number?" />
+				 <f:selectItem itemValue="What is the name of the person you hate the most?" itemLabel="What is the name of the person you hate the most?" />
+			</h:selectOneMenu><br/>
+			<h:message for="sq2" styleClass="error"></h:message>
+			<br/>
+			<h:inputText class="saf" a:placeholder="Answer 2 *" value="#{create.sqa2}" 
+								required="true"
+								id="sqa2"
+								requiredMessage="Enter Security Answer"/><br/>
+								<h:message for="sqa2" styleClass="error"></h:message>
+								<br/>
+			
+			<h:commandButton class="Button" value="Create" action="#{create.execute()}"/><br/>
+			<p class="subText">Already a user? Login <h:link value="here" outcome="index"></h:link></p>
+			
+			
+		</h:form>
+		</div>	
+	
+	</h:body>
+	
+	
+	
+	
+	</html>

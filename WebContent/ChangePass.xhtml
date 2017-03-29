@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	
+	
+	
+	<h:head>
+		<title>CTP | Login</title>
+		<h:outputStylesheet name="css/styles.css"  />
+	</h:head>
+	
+	<h:body>
+		<header>
+			<h1 class="logo">CTP Inc.</h1>
+			<h class="subTitle">Powered by JavaServer Faces</h>
+			<div id="line"></div>
+		</header>
+		
+		<div id="LoginBox">	
+		<h id="forgotHead">Change Password</h>
+		<h:form>
+			<p><h:message for="cupass" styleClass="error" ></h:message></p>
+			<p><h:message for="cpass" styleClass="error" ></h:message></p>
+			<p><h:message for="email" styleClass="error" ></h:message></p>
+			<h:messages globalOnly="true" styleClass="error"/>	
+			<h:inputSecret class="TextArea" a:placeholder="Current Password" value="#{changePassBean.currentPass}" 
+								id="cupass"
+								rendered="#{changePassBean.type=='logged'}"
+								required="true"
+								requiredMessage="Enter Current Password">
+			</h:inputSecret>
+			<br/><br/><br/>
+			<h:inputSecret class="TextArea" a:placeholder="New Password" value="#{changePassBean.nPass}"
+								required="true"
+								id="npass"
+								requiredMessage="Enter new Password"></h:inputSecret>
+			<br/><br/><br/>
+			<h:inputSecret class="TextArea" a:placeholder="Confirm Password" value="#{changePassBean.cPass}"
+								required="true"
+								id="cpass"
+								requiredMessage="Enter new Password"></h:inputSecret>
+		
+		<br/><br/><br/>
+			<h:commandButton class="Button" value="Submit" action="#{changePassDAO.exec(changePassBean)}"/><br/>
+		</h:form>
+		</div>	
+	
+	</h:body>
+	
+	
+	
+	
+	</html>

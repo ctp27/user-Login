@@ -1,0 +1,330 @@
+@CHARSET "ISO-8859-1";
+
+/******* Common Properties *************/
+html,body{
+	margin:0;
+	padding:0;
+}
+
+
+.TextArea{
+	width:250px;
+	height:35px;
+	border:1px solid #009688;
+	text-align:center;
+	font-size:15px;
+	
+}
+
+.error{
+	color:red;
+}	
+
+.Radio{
+	font-size:20px;
+}
+
+.Button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #009688;
+	width:100px;
+	font-size:20px;
+	padding:5px 10px;
+}
+
+.Button:hover {
+    background-color:#009688;
+    color: white;
+}
+
+.Button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+header{
+	margin: 0px;
+	padding: 35px 0px 0px 0px;
+	background-color:#009688;
+	font-family-'Algreya Sans', sans-serif;
+	text-align:center;
+}
+
+.logo{
+	text-align:center;
+	color:white;
+	font-size:50px;
+	
+}
+
+.subTitle{
+	text-align:center;
+	color:#FFEB3B;
+	font-size:20px;
+}
+
+.subText{
+	
+}
+
+#LoginBox{
+	background-color:#ECEFF1;
+	max-width:300px;
+	text-align:center;
+	margin:60px auto;
+	padding: 40px 40px
+	
+}
+
+.prefix{
+	width:120px;
+	height:39px;
+	border:1px solid #009688;
+	text-align:center;
+	font-size:16px;
+}
+
+.spacing{
+	margin:0 80px 0 0;
+}
+input[type="text"]
+{
+    font-size:16px;
+}
+
+.centerAlign{
+	text-align:center;
+}
+
+.formHeaders{
+	font-weight:bold;
+	font-size:22px;
+}
+
+.star{
+	color:red;
+}
+
+/*********** Registration_Form **************/
+
+#regBox{
+	background-color:#ECEFF1;
+	max-width:800px;
+	margin:60px auto;
+	padding: 60px 110px;
+	white-space: nowrap;
+}
+
+#bodyHead{
+	font-size:32px;
+	text-align:center;
+	font-weight:bold;
+}
+
+#dash{
+	padding:0 30px;
+}
+
+.address{
+	width:500px;
+	height:35px;
+	border:1px solid #009688;
+	text-align:center;
+	font-size:15px;
+}
+
+.dropDown{
+	width:250px;
+	height:39px;
+	border:1px solid #009688;
+	text-align:center;
+	font-size:15px;
+}
+textarea{
+	resize:none;
+	width:700px;
+	height:150px;
+}
+
+/**************** Pending Page *************/
+
+.msgTitle{
+	text-align:center;
+	font-size:25px;
+	font-weight:20%;
+}
+
+/**************** Create PAge *************/
+#createBox{
+	background-color:#ECEFF1;
+	max-width:500px;
+	text-align:center;
+	margin:60px auto;
+	padding: 60px 40px 40px
+}
+#formHead{
+	font-weight:bold;
+	font-size:20px;
+}
+
+.sqf{
+	width:350px;
+	height:39px;
+	border:1px solid #009688;
+	text-align:center;
+	font-size:15px;
+}
+
+.saf{
+	width:350px;
+	height:39px;
+	border:1px solid #009688;
+	text-align:center;
+	font-size:15px;
+}
+
+/*************** Success Page ***********/
+
+#success{
+	font-size:30px;
+}
+
+.position{
+	margin: 100px 0 0 0;
+}
+
+/*************** Home page ***********/
+#homeHead{
+	font-size:32px;
+	text-align:center;
+	font-weight:bold;
+}
+
+#homeTitle{
+	text-align:center;
+	color:black;
+	font-size:20px;
+}
+
+.table{
+	margin:20px auto 60px auto;
+	
+}
+
+table{
+	
+	align:center;
+	 width:50%;
+	 border-collapse:collapse;
+	
+}
+.alpha tr:hover {
+	
+background-color: #f5f5f5
+	
+}
+tr{
+	
+}
+
+
+.alpha td{
+	height:35px;
+	border: 1px solid #ddd;
+}
+
+.alpha td:nth-child(1){
+	font-weight:bold;
+	text-align:center;
+}
+
+.alpha th{
+	height:40px;
+	color:white;
+    background-color: #00695C;
+}
+
+
+#content{
+	text-align:center;
+	max-width:1300px;
+	padding:20px 10px;
+	
+}
+.topspace{
+	margin-top:200px;
+}
+
+#line{
+	background-color:#009688;
+	height:20px;
+	text-align:center;
+}
+
+.image{
+	height:200px;
+	width:200px;
+	border-radius:100%;
+	border-style: solid;
+    border-color: white;
+    border-width: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline;
+}
+
+.dropdown-content {
+    display: none;
+	padding-top:5px;
+	margin-left:35%;
+    border-style:solid;
+    border-color:#00695C;
+    border-width:0.5px;
+    background-color: #f9f9f9;
+    max-width:30%;
+    height:35px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*************** Forgot Password page ***********/
+
+#forgotHead{
+	font-size:32px;
+	text-align:center;
+	font-weight:bold;
+}
+/*************** Security Questions Page ***********/
+.Question{
+	font-size:22px;
+	font-weight:20%;
+}
+
+#QuestionBox{
+	background-color:#ECEFF1;
+	max-width:400px;
+	text-align:center;
+	margin:60px auto;
+	padding: 40px 40px
+}
+/*************** Admin home ***********/
+.blob{
+	height:100px;
+	width:100px;
+	border-radius:100%;
+	border-style: solid;
+    border-color: white;
+    border-width: 5px;
+}
+
+#author{
+	width:100%;
+	overflow:auto; 
+	height:500px;
+}

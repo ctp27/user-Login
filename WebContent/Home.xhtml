@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+	
+	
+	<h:head>
+		<title>CTP | Login</title>
+		<h:outputStylesheet name="css/styles.css"  />
+	</h:head>
+	
+	<h:body>
+		<header>
+			<h1 class="logo">CTP Inc.</h1>
+			<h class="subTitle">Powered by JavaServer Faces</h>
+			<h:form>
+			<h:commandLink  value="Edit"  action="Reg" style="margin:0 0 0 1000px;text-decoration:none;color:white;padding:0 60px;font-size:20px;"/>
+			<h:commandLink  value="Logout"  action="#{logout.invalidate()}" style="text-decoration:none;color:white;font-size:20px;"/>
+			</h:form>
+		
+			<div id="line">
+				<h:graphicImage styleClass="image" library="img" name="default.png" rendered="#{homeBean.link==null}"/>
+				<div class="dropdown">
+					<h:graphicImage styleClass="image" value="http://localhost:8080/image/#{homeBean.link}" rendered="#{homeBean.link!=null}"/>	
+					<div class="dropdown-content">
+						<h:form>
+							<h:commandLink value="Change" action="#{homeBean.displayUpload()}" rendered="#{homeBean.link!=null}"
+							style="text-decoration:none;color:#00695C;padding-right:60px;font-size:20px;font-weight:30%;">
+								<f:ajax render=":hiddenField :main :hiddenLink :hider"/>
+							</h:commandLink>	
+							|
+							<h:commandLink value="Remove" action="#{homeBean.removeDp()}" rendered="#{homeBean.link!=null}"
+							style="text-decoration:none;color:#00695C;padding-left:60px;font-size:20px;font-weight:30%;">
+								<f:ajax render=":hiddenField :main :hiddenLink :hider"/>
+							</h:commandLink>	
+						</h:form>
+					</div>
+				</div>
+		</div>
+			
+		</header>
+		
+		<div class="centerAlign topspace">
+		
+		<h:form>
+			<h:commandLink value="Upload Profile picture" action="#{homeBean.displayUpload()}" rendered="#{homeBean.link==null}"
+			style="text-decoration:none;color:#00695C;padding:0 60px;font-size:20px;font-weight:30%;">
+				<f:ajax render=":hiddenField :main :hiddenLink :hider"/>
+			</h:commandLink>	
+		</h:form>
+		
+		
+		
+		<p><h:panelGroup id="hiddenField">
+			<h:form id="main" enctype="multipart/form-data">
+		    		<h:inputFile value="#{homeBean.image}" rendered="#{homeBean.upload}"/>
+		    		<h:commandButton styleClass="Button" value="Upload" action="#{homeBean.uploadIt()}" rendered="#{homeBean.upload}"/>
+		    </h:form>
+		    
+			</h:panelGroup></p>
+			<h:panelGroup id="hiddenLink">
+				<h:form id="hider">
+			    		<p><h:commandLink value="Cancel" action="#{homeBean.hideUpload()}" rendered="#{homeBean.upload}"
+			    		style="text-decoration:none;color:blue;padding:0 60px;font-size:20px;font-weight:30%;">
+							<f:ajax render=":hiddenField :hiddenLink :hider"/>
+						</h:commandLink></p>
+				</h:form>
+			</h:panelGroup>
+			
+			
+		<h id="homeHead">Welcome to your Home Page, #{homeBean.firstName}</h>
+		<p id="homeTitle">Your details are as follows :</p>
+		<h:messages globalOnly="true" styleClass="error"/>
+		</div>
+		<div class="table">
+		<div class="Link">
+		<h:form>
+			
+			</h:form>
+			</div>
+			<table class="alpha" align="center">
+			<tr>
+			  <th colspan="2">Customer ID: #{homeBean.ID}</th>
+			</tr>
+			  <tr>
+			    <td>Full Name</td>
+			    <td>#{homeBean.prefix} #{homeBean.firstName} #{homeBean.lastName}</td>
+			  </tr>
+			  <tr>
+			    <td>Gender</td>
+			    <td>#{homeBean.gender}</td>
+			  </tr>
+			  <tr>
+			    <td>Date of Birth</td>
+			    <td>#{homeBean.date}</td>
+			  </tr>
+			  <tr>
+			    <td>Contact Number</td>
+			    <td>#{homeBean.areaCode}-#{homeBean.phoneNumber}</td>
+			  </tr>
+			  <tr>
+			    <td>Email ID</td>
+			    <td>#{homeBean.email}</td>
+			  </tr>
+			  <tr>
+			    <td>ID Proofs available</td>
+			    <td>
+			    <ul>
+			    	<ui:repeat value="#{homeBean.id}" var="tempId">
+			    		<li>#{tempId}</li>
+			    	</ui:repeat>
+			    </ul>
+			    </td>
+			  </tr>
+			   <tr>
+			    <td>Address</td>
+			    <td>
+				    #{homeBean.address}<br/>
+				    #{homeBean.city}<br/>
+				    #{homeBean.state}
+			 
+			    </td>
+			  </tr>
+			   <tr>
+			    <td>About you</td>
+			    <td>#{homeBean.suggest}</td>
+			  </tr>
+			</table>
+		
+		</div>
+		
+	</h:body>
+	</html>

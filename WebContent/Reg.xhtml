@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:jsf="http://java.sun.com/jsf"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+	
+	
+	<h:head>
+		<title>Registration</title>
+		<h:outputStylesheet name="css/styles.css"  />
+	</h:head>
+	
+	<h:body>
+		<header>
+			<h1 class="logo">CTP Inc.</h1>
+			<h class="subTitle">Powered by JavaServer Faces</h>
+			<h:form>
+			<h:commandLink  value="Change Password"  action="#{register.changePass()}" style="margin:0 0 0 700px;text-decoration:none;color:white;padding:0 60px;font-size:20px;font-weight:bold;"/>
+			<h:commandLink  value="Logout"  action="#{logout.invalidate()}" style="text-decoration:none;color:white;font-size:20px;font-weight:bold;"/>
+			
+			</h:form>
+			<div id="line"></div>
+		</header>
+		<div id="regBox">
+<!-- *******************		Form Code & validation messages *************************** -->
+		<h:form>
+			
+			<div class="centerAlign">
+			<p><h:message for="firstName" styleClass="error" ></h:message></p>
+			<p><h:message for="lastName" styleClass="error" ></h:message></p>
+			<p><h:message for="gender" styleClass="error" ></h:message></p>
+			<p><h:message for="acode" styleClass="error" ></h:message></p>
+			<p><h:message for="pn" styleClass="error" ></h:message></p>
+			<p><h:message for="email" styleClass="error" ></h:message></p>
+			<p><h:message for="address" styleClass="error" ></h:message></p>
+			<p><h:message for="city" styleClass="error" ></h:message></p>
+			<h id="bodyHead">Registration Form</h>
+			<p>Please fill in the following details. "<h class="star formHeaders">*</h>" marked fields are mandatory</p>
+			</div>
+			
+<!-- *******************		Full name code  *************************** -->
+
+			<h class="formHeaders" >Full Name <h class="star">*</h></h><br/>
+			<div class="spacing">
+			<h:selectOneMenu class="prefix spacing" value="#{register.prefix}">
+					<f:selectItems value="#{register.prefixList}"/> 
+			</h:selectOneMenu>
+			
+			 <h:inputText class="TextArea spacing" a:placeholder="First Name" value="#{register.firstName}" 
+								required="true"
+								id="firstName"
+								requiredMessage="Enter First Name"/>
+			 <h:inputText class="TextArea spacing" a:placeholder="Last Name" value="#{register.lastName}" 
+								required="true"
+								id="lastName"
+								requiredMessage="Enter Last Name"/></div>
+			<br/><br/>
+<!-- *******************		Gender Code  *************************** -->
+			
+			<h class="formHeaders">Gender <h class="star">*</h></h><br/>
+			<h:selectOneRadio class="Radio" value="#{register.gender}" required="true" id="gender"
+								requiredMessage="Select Gender!">
+				<f:selectItem itemValue="Male" itemLabel="Male"/>
+				<f:selectItem itemValue="Female" itemLabel="Female"/>
+			</h:selectOneRadio><br/>
+			
+<!-- *******************		Date Code *************************** -->			
+<!-- 			<h class="formHeaders">Date <h class="star">*</h></h><br/> -->
+<!-- 			<input class="TextArea" jsf:id ="date" type="date" jsf:value="#{register.date}" min="1920-01-01" max="2016-04-30" required="true" -->
+<!-- 			 requiredMessage="Enter Date"> -->
+<!-- 			 </input> -->
+			  <h:inputText class="TextArea" id="date" p:type="date" value="#{register.date}" >
+    		   </h:inputText>
+			<br/><br/><br/>
+			
+<!-- *******************		Phone Number Code  *************************** -->
+			
+			<h class="formHeaders">Phone Number <h class="star">*</h></h><br/>
+			<h:inputText class="prefix" a:placeholder="Area Code" value="#{register.areaCode}" 
+								required="true"
+								id="acode"
+								maxlength="3"
+								requiredMessage="Enter Area Code"
+								validatorMessage="Invalid Area code">
+								<f:validateLength minimum="3" maximum="3" />
+								<f:validateRegex pattern="^[0-9]*$" />
+			</h:inputText>
+			<h id="dash">-</h>
+			<h:inputText class="TextArea" a:placeholder="Phone Number" value="#{register.phoneNumber}" 
+								required="true"
+								id="pn"
+								maxlength="10"
+								requiredMessage="Enter Phone Number"
+								validatorMessage="Invalid phone number">
+					<f:validateLength minimum="8" maximum="10" />
+					<f:validateRegex pattern="^[0-9]*$" />
+			</h:inputText>
+			<br/>
+			<br/>
+								
+<!-- *******************		Email code  *************************** -->		
+	
+			<h class="formHeaders">Email <h class="star">*</h></h><br/>			
+			<h:inputText class="TextArea" a:placeholder="Email ID" value="#{register.email}" 
+								required="true"
+								id="email"
+								requiredMessage="Enter Email ID"
+								validatorMessage="Invalid Email">
+					<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+			</h:inputText>
+								<br/><br/>	
+								
+<!-- *******************		Id code  *************************** -->	
+					
+			<h class="formHeaders">IDs Available</h><br/>
+			<h:selectManyCheckbox class="Radio" value="#{register.id}">
+				<f:selectItem  itemValue="PAN" itemLabel="PAN Card"/>
+				<f:selectItem  itemValue="Aadhar" itemLabel="Aadhar Card"/>
+				<f:selectItem  itemValue="Passport" itemLabel="Passport"/>
+				<f:selectItem  itemValue="License" itemLabel="Driving License"/>
+			</h:selectManyCheckbox><br/><br/>	
+			
+<!-- *******************		Address code  *************************** -->	
+		
+			<h class="formHeaders">Address <h class="star">*</h></h><br/>
+			<h:inputText class="address" a:placeholder="Address" value="#{register.address}" 
+								required="true"
+								id="address"
+								requiredMessage="Enter Address"/><br/><br/>
+			<h class="formHeaders" style="padding:0 10px;">City<h class="star">*</h></h>
+			<h:inputText class="TextArea spacing" a:placeholder="City" value="#{register.city}" 
+								required="true"
+								id="city"
+								requiredMessage="Enter City"/>
+			<h class="formHeaders" style="padding:0 10px;">State <h class="star">*</h></h>
+			<h:selectOneMenu class="dropDown spacing" a:placeholder="State" value="#{register.state}">
+					<f:selectItems value="#{register.stateList}"/> 
+			</h:selectOneMenu><br/><br/><br/>
+			
+<!-- *******************		Suggestion code  *************************** -->	
+		
+			<h class="formHeaders">Tell us something about yourself</h><br/>
+			<h:inputTextarea style="font-family:Calibri;font-size:20px" row="20" col="50" value="#{register.suggest}"/><br/><br/>
+			
+<!-- *******************		Submit button code *************************** -->	
+		
+			<div class="centerAlign">
+			<h:commandButton class="Button" value="Submit" action="#{register.exec()}"/>
+			</div>
+		</h:form>
+		</div>
+	</h:body>
+	
+	</html>

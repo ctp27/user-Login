@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+	
+	
+	<h:head>
+		<title>CTP | Login</title>
+		<h:outputStylesheet name="css/styles.css"  />
+	</h:head>
+	
+	<h:body>
+		<header>
+			<h1 class="logo">CTP Inc.</h1>
+			<h class="subTitle">Powered by JavaServer Faces</h>
+			<h:form>
+			<h:commandLink  value="Logout"  action="#{logout.invalidate()}" style="margin:0 0 0 1000px;text-decoration:none;color:white;font-size:20px;font-weight:bold;"/>
+			
+			</h:form>
+			<div id="line"></div>
+		</header>
+		<h1 style=""></h1>
+		<div style="text-align:center;">
+		<h:outputText rendered="#{!pendingBean.locked}"
+			styleClass="msgTitle"
+			value="Hi #{pendingBean.firstName}, Your account is now ready but pending activation. Kindly contact the Admin to activate."/>
+		<h:outputText rendered="#{pendingBean.locked}"
+			styleClass="msgTitle"
+			value="Hi #{pendingBean.firstName}, Your account has been locked due to suspicious activity. Please contact the admin to activate your account."/>
+			</div>
+	</h:body>
+	
+	
+	
+	
+	</html>
+	
+	
